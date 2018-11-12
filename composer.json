@@ -1,0 +1,26 @@
+{
+    "name": "markei/wordpress-smtp-configuration",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "description": "Configure WordPress for SMTP mail",
+    "homepage": "https://github.com/Markei/wordpress-smtp-configuration",
+    "authors": [
+        {
+            "name": "Maarten de Keizer",
+            "homepage": "http://www.maartendekeizer.nl/"
+        }
+    ],
+    "keywords": [
+        "wordpress",
+        "wordpress-plugin",
+        "smtp"
+    ],
+    "support": {
+        "issues": "https://github.com/Markei/wordpress-smtp-configuration/issues",
+        "docs": "https://github.com/Markei/wordpress-smtp-configuration"
+    },
+    "require": {
+        "php": ">=7.1.0",
+        "composer/installers": "~1.0"
+    }
+}
