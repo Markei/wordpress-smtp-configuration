@@ -13,13 +13,13 @@ Domain Path:  /languages
 */
 
 add_action( 'phpmailer_init', function ($phpmailer) {
-    if (is_defined('SMTP') === false) {
+    if (defined('SMTP') === false) {
         return;
     }
     $settings = [];
     preg_match('/(?<protocol>smtp|sendmail|mail*):\/\/(?<host>[\w\.]*)(:(?<port>.*))?\?(?<options>.*)/', SMTP, $settings);
     if (isset($settings['options'])) {
-        $options = parse_str($settings['options'], $settings);
+        parse_str($settings['options'], $options);
     }
     if ($settings['protocol'] === 'smtp') {
         $phpmailer->isSMTP();
@@ -32,15 +32,12 @@ add_action( 'phpmailer_init', function ($phpmailer) {
     if (isset($settings['port'])) {
         $phpmailer->Port = $settings['port'];
     }
-    if (isset($settings['username'])) {
-        $phpmailer->Username = $settings['username'];
+    if (isset($options['username']) && isset($options['password'])) {
         $phpmailer->SMTPAuth = true;
+        $phpmailer->Username = $options['username'];
+        $phpmailer->Password = $options['password'];
     }
-    if (isset($settings['password'])) {
-        $phpmailer->Password = $settings['password'];
-        $phpmailer->SMTPAuth = true;
-    }
-    if (isset($settings['encryption'])) {
-        $phpmailer->SMTPSecure = $settings['encryption'];
+    if (isset($options['encryption'])) {
+        $phpmailer->SMTPSecure = $options['encryption'];
     }
 });
