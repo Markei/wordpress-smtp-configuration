@@ -17,7 +17,7 @@ add_action( 'phpmailer_init', function ($phpmailer) {
         return;
     }
     $settings = [];
-    preg_match('/(?<protocol>smtp|sendmail|mail*):\/\/(?<host>[\w\.]*)(:(?<port>.*))?\?(?<options>.*)/', SMTP, $settings);
+    preg_match('/(?<protocol>smtp|sendmail|mail*):\/\/(?<host>[\w\.]*)(:(?<port>.*))?\??(?<options>.*)/', SMTP, $settings);
     if (isset($settings['options'])) {
         parse_str($settings['options'], $options);
     }
