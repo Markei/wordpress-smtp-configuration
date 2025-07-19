@@ -1,27 +1,37 @@
-# SMTP configuration
+=== SMTP configuration ===
+Contributors: markeinl
+Tags: mail, smtp, xoauth2, oauth
+Requires at least: 6.0.0
+Tested up to: 6.8
+Requires PHP: 8.1
+Stable Tag: 1.2.0
+License: MIT
+License URI: https://opensource.org/license/mit
 
 Configure WordPress for sending mail via SMTP mail supporting encryption, (basic) auth and xoauth2. Configuration is done via wp-config.php.
+
+== Description ==
+With this plugin you can let WordPress send mail via SMTP servers or sendmail.
 
 For SMTP is supports plain connections but also SSL/TLS encryption (SMTPS) and STARTLS encryption.
 Authentication is possible via normal authentication (basic) and XOAUTH2 (via service principal).
 
 In the WordPress admin interface an e-mail test tool will become available to view the given configuration and let you sent a test mail.
 
-This plugin is free, does not add signatures to your mail, no spam and no ad's.
+This plugin is free, does not add signatures to your mail, no spam and no ad\'s.
 
-## How to
-
+== Installation ==
 Activate the plugin in WordPress admin.
 
-Add the next line to `wordpress/wp-config.php` above `require_once(ABSPATH . 'wp-settings.php');`
+Add the next line to `wordpress/wp-config.php` above `require_once(ABSPATH . \'wp-settings.php\');`
 
-    define('SMTP', 'smtp://localhost');
+    define(\'SMTP\', \'smtp://localhost\');
 
-### Supported options
+
 
 The configuration supports a URL format. Example: `protocol://host:port?optionA=valueA&optionB=valueB`.
 
-#### Protocol SMTP
+
 
 Simple configuration, no auth, port 25
 
@@ -49,20 +59,3 @@ Caching can be enabled via the option cache=1, this will speed up the processes 
 
     define('SMTP', 'smtp://localhost:587?auth=xoauth2&client_id=my-client-id&client_secret=my-client-secret&token_endpoint=https://my-oauth-server/token&scope=sendmail&cache=1');
 
-#### Protocol Sendmail
-
-No options are available.
-
-    define('SMTP', 'sendmail://');
-
-#### Protocol mail
-
-No options are available.
-
-    define('SMTP', 'mail://');
-
-## Install via composer
-
-Install the plugin via Composer
-
-    composer require markei/wordpress-smtp-configuration

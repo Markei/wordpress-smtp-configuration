@@ -2,7 +2,7 @@
     <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
     <h2>Configuration</h2>
     <table class="wp-list-table widefat fixed striped table-view-list">
-        <?php foreach (markei_wordpress_smtp__parse_settings() as $setting => $value): ?>
+        <?php foreach (smtp_configuration__parse_settings() as $setting => $value): ?>
             <?php if (is_numeric($setting) === false): ?>
                 <tr>
                     <th><strong><?php echo esc_html($setting); ?></strong></th>
@@ -13,8 +13,12 @@
                                     <tr>
                                         <th><?php echo esc_html($option); ?></th>
                                         <td>
-                                            <?php if ($option !== 'password'): ?>
-                                                <?php echo esc_html($optionValue); ?>
+                                            <?php if ($option !== 'password' && $option !== 'client_secret'): ?>
+                                                <?php if (is_bool($optionValue)): ?>
+                                                    <?php echo $optionValue ? 'true' : 'false'; ?>
+                                                <?php else: ?>
+                                                    <?php echo esc_html($optionValue); ?>
+                                                <?php endif; ?>
                                             <?php else: ?>
                                                 ***
                                             <?php endif; ?>
@@ -31,10 +35,17 @@
         <?php endforeach; ?>
     </table>
     <h2>Send test mail</h2>
-    <?php if (strlen($flash) > 0): ?>
-        <strong><?php echo esc_html($flash); ?></strong>
+    <?php if (isset($result) and $result === true): ?>
+        <p><strong>Successfully sent</strong>, duration: <?php echo esc_html($duration); ?> second(s)</p>
+    <?php elseif (isset($result) and $result === false): ?>
+        <p>Error during sending.</p>
+        <?php global $phpmailer; ?>
+        <?php if ($phpmailer->ErrorInfo): ?>
+            <?php echo esc_html($phpmailer->ErrorInfo); ?>
+        <?php endif; ?>
     <?php endif; ?>
     <form method="post">
+        <?php wp_nonce_field('smtp-configuration-test-mail'); ?>
         <table class="form-table">
             <tbody>
                 <tr>
@@ -42,15 +53,15 @@
                         <label for="from">From</label>
                     </th>
                     <td>
-                        <input type="email" name="from" id="from">
+                        <input type="email" name="from" id="from" value="<?php echo esc_attr($from); ?>">
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        <label for="from">To</label>
+                        <label for="to">To</label>
                     </th>
                     <td>
-                        <input type="email" name="to" id="to">
+                        <input type="email" name="to" id="to" value="<?php echo esc_attr($to); ?>">
                     </td>
                 </tr>
             </tbody>

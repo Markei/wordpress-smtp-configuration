@@ -2,7 +2,7 @@
     "name": "markei/wordpress-smtp-configuration",
     "type": "wordpress-plugin",
     "license": "MIT",
-    "description": "Configure WordPress for SMTP mail",
+    "description": "Configure WordPress for sending mail via SMTP mail supporting encryption, (basic) auth and xoauth2. Configuration is done via wp-config.php.",
     "homepage": "https://github.com/Markei/wordpress-smtp-configuration",
     "authors": [
         {
@@ -13,14 +13,15 @@
     "keywords": [
         "wordpress",
         "wordpress-plugin",
-        "smtp"
+        "smtp",
+        "xoauth2"
     ],
     "support": {
         "issues": "https://github.com/Markei/wordpress-smtp-configuration/issues",
         "docs": "https://github.com/Markei/wordpress-smtp-configuration"
     },
     "require": {
-        "php": ">=7.1.0",
+        "php": ">=8.1.0",
         "composer/installers": "~1.0"
     }
 }
