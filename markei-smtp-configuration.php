@@ -1,14 +1,14 @@
 <?php
 /*
-Plugin Name:  SMTP configuration
+Plugin Name:  Markei SMTP configuration
 Plugin URI:   https://github.com/markei/wordpress-smtp-configuration/
-Description:  Configure WordPress for SMTP mail with support for auth en XOAUTH
-Version:      1.2.0
+Description:  Configure WordPress for sending mail via SMTP mail supporting encryption, (basic) auth and xoauth2. Configuration is done via wp-config.php.
+Version:      1.2.1
 Author:       Markei.nl
 Author URI:   https://www.markei.nl
 License:      MIT
 License URI:  https://opensource.org/licenses/MIT
-Text Domain:  smtp-configuration
+Text Domain:  markei-smtp-configuration
 */
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'PHPMailer' . DIRECTORY_SEPARATOR . 'OAuthTokenProvider.php';

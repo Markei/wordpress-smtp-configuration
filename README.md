@@ -1,4 +1,4 @@
-# SMTP configuration
+# Markei SMTP configuration for Wordpress
 
 Configure WordPress for sending mail via SMTP mail supporting encryption, (basic) auth and xoauth2. Configuration is done via wp-config.php.
 
