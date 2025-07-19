@@ -53,7 +53,7 @@ Prefered way for authentification with SMTPS encryption. Note encryption=ssl eve
 
     define('SMTP', 'smtp://localhost:465?encryption=ssl&username=my-username&password=my-password');
 
-Using XOAUTH2 for authentication is possible when `client_credentials`-flow is supported, for example via service principals in 365. This is a good guide for [setting up a service principal for SMTP mailing in Microsoft 365/Office 365/Outlook Online/Exchange Online](https://www.maartendekeizer.nl/blog/detail/setup-smtp-xoauth2-with-microsoft-365). For 365 use `token_endpoint=https://login.microsoftonline.com/<Directory (tenant ID)>/oauth2/v2.0/token` and `scope=https://outlook.office365.com/.default`.
+Using XOAUTH2 for authentication is possible when `client_credentials`-flow is supported, for example via service principals in 365. This is a good guide for [setting up a service principal for SMTP mailing in Microsoft 365/Office 365/Outlook Online/Exchange Online](https://www.maartendekeizer.nl/blog/detail/setup-smtp-xoauth2-with-microsoft-365). For 365 use server `smtp.office365.com`, port `587`, `token_endpoint=https://login.microsoftonline.com/<Directory (tenant ID)>/oauth2/v2.0/token` and `scope=https://outlook.office365.com/.default`.
 
 Caching can be enabled via the option cache=1, this will speed up the processes for sending mails becauses not for each mail a new token is requested. The access token is cached using the WordPress transient system.
 
