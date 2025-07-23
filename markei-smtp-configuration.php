@@ -32,6 +32,7 @@ $plugin = new class {
 
     // options
     const OPTION_OAUTH2_REFRESH_TOKEN = 'markei_smtp_configuration___oauth2_refresh_token';
+    const OPTION_OAUTH2_REFRESH_TOKEN_EXPIRY = 'markei_smtp_configuration___oauth2_refresh_token_expiry';
 
     public function __construct()
     {
@@ -125,7 +126,8 @@ $plugin = new class {
                 $settings->scope,
                 $settings->useCache,
                 self::TRANSIENT_OAUTH2_ACCESS_TOKEN,
-                self::OPTION_OAUTH2_REFRESH_TOKEN
+                self::OPTION_OAUTH2_REFRESH_TOKEN,
+                self::OPTION_OAUTH2_REFRESH_TOKEN_EXPIRY,
             );
         }
         $phpmailer->SMTPAuth = true;
@@ -271,7 +273,8 @@ $plugin = new class {
         {
             return [
                 'enabled' => $settings ? (empty($settings->authEndpoint) === false) : false,
-                'refreshTokenSet' => (\get_option(self::OPTION_OAUTH2_REFRESH_TOKEN, null) !== null)
+                'refreshTokenSet' => (\get_option(self::OPTION_OAUTH2_REFRESH_TOKEN, null) !== null),
+                'refreshTokenExpiry' => \get_option(self::OPTION_OAUTH2_REFRESH_TOKEN_EXPIRY, null)
             ];
         }
 
@@ -302,6 +305,7 @@ $plugin = new class {
                 $settings->useCache,
                 self::TRANSIENT_OAUTH2_ACCESS_TOKEN,
                 self::OPTION_OAUTH2_REFRESH_TOKEN,
+                self::OPTION_OAUTH2_REFRESH_TOKEN_EXPIRY,
                 $query['code'],
                 $redirectUri
             );

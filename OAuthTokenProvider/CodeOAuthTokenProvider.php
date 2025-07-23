@@ -14,6 +14,7 @@ class CodeOAuthTokenProvider extends AbstractOAuthTokenProvider
         bool $cacheAccessToken,
         string $transientKeyAccessToken,
         protected string $optionKeyRefreshToken,
+        protected string $optionKeyRefreshTokenExpiry,
         protected string $code,
         protected string $redirectUri
     )
@@ -38,6 +39,7 @@ class CodeOAuthTokenProvider extends AbstractOAuthTokenProvider
 
         // save the refresh token
         \update_option($this->optionKeyRefreshToken, $data['refresh_token']);
+        \update_option($this->optionKeyRefreshTokenExpiry, isset($data['refresh_token_expires_in']) ? time() + intval($data['refresh_token_expires_in']) : null);
 
         // return access token and ttl
         return ['accessToken' => $data['access_token'], 'expiresIn' => $data['expires_in']];
