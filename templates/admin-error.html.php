@@ -1,7 +1,10 @@
 <?php
     use Markei\SmtpConfiguration\Exception\DsnException;
-use Markei\SmtpConfiguration\Exception\OAuthException;
+    use Markei\SmtpConfiguration\Exception\OAuthException;
 
+    if (defined('ABSPATH') === false) {
+        exit;
+    }
 ?><div class="wrap">
 
     <h1><?php echo esc_html(get_admin_page_title()); ?></h1>

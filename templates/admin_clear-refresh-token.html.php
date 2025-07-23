@@ -1,3 +1,8 @@
+<?php
+    if (defined('ABSPATH') === false) {
+        exit;
+    }
+?>
     <?php if (isset($clearRefreshToken['enabled']) && $clearRefreshToken['enabled'] === true): ?>
         <h2>Clear refresh token</h2>
         <?php if (isset($clearRefreshToken['message'])): ?>

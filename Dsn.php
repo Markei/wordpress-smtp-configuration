@@ -9,6 +9,10 @@ use Markei\SmtpConfiguration\Exception\DsnException;
 use ReflectionObject;
 use ReflectionProperty;
 
+if (defined('ABSPATH') === false) {
+    exit;
+}
+
 class Dsn
 {
     const PROTOCOLS = [self::PROTOCOL_MAIL, self::PROTOCOL_SMTP, self::PROTOCOL_SENDMAIL];

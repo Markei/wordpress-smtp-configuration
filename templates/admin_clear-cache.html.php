@@ -1,3 +1,8 @@
+<?php
+    if (defined('ABSPATH') === false) {
+        exit;
+    }
+?>
     <?php if ($clearCache['enabled'] === true): ?>
         <h2>Clear cache (access token only)</h2>
         <?php if (isset($clearCache['message'])): ?>

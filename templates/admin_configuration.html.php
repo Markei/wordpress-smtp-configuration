@@ -1,3 +1,8 @@
+<?php
+    if (defined('ABSPATH') === false) {
+        exit;
+    }
+?>
     <h2>Configuration</h2>
     <p>Configuration via: <?php echo $settings['configuredViaConst'] ? 'constant' : 'other'; ?>
     <?php if ($settings['settings']): ?>

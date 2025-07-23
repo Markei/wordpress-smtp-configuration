@@ -6,6 +6,10 @@ namespace Markei\SmtpConfiguration\OAuthTokenProvider;
 
 use Markei\SmtpConfiguration\Exception\OAuthException;
 
+if (defined('ABSPATH') === false) {
+    exit;
+}
+
 abstract class AbstractOAuthTokenProvider implements \PHPMailer\PHPMailer\OAuthTokenProvider
 {
     /**

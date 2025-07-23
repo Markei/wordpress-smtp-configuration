@@ -1,10 +1,15 @@
+<?php
+    if (defined('ABSPATH') === false) {
+        exit;
+    }
+?>
     <?php if ($obtainToken['enabled'] === true): ?>
         <h2>Obtain access and refresh token</h2>
         <?php if (isset($obtainToken['refreshTokenSet']) === true && $obtainToken['refreshTokenSet'] === true): ?>
             <p>We already have a refresh token.</p>
             <?php if ($obtainToken['refreshTokenExpiry'] !== null): ?>
                 <?php if ($obtainToken['refreshTokenExpiry'] > time()): ?>
-                    <p>The current refresh token is valid until <?php echo esc_html(date('c', $obtainToken['refreshTokenExpiry'])); ?></p>
+                    <p>The current refresh token is valid until <?php echo esc_html(gmdate('c', $obtainToken['refreshTokenExpiry'])); ?></p>
                     <p>The refresh token will be automaticly renewed when a mail is send and the cached access token is expired. Obtaining a new one is only necessary if the current one is revoked by the mail provider.</p>
                 <?php else: ?>
                     <p>The current refresh token is expired. Obtain a new token.</p>

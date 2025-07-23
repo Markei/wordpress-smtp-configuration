@@ -1,7 +1,7 @@
 === Markei SMTP configuration ===
 Contributors: markeinl
 Tags: mail, smtp, xoauth2, oauth
-Requires at least: 6.0.0
+Requires at least: 6.8
 Tested up to: 6.8
 Requires PHP: 8.2
 Stable Tag: 1.3.0

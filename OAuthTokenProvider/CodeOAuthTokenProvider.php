@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Markei\SmtpConfiguration\OAuthTokenProvider;
 
+if (defined('ABSPATH') === false) {
+    exit;
+}
+
 class CodeOAuthTokenProvider extends AbstractOAuthTokenProvider
 {
     public function __construct(

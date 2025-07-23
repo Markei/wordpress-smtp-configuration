@@ -1,3 +1,8 @@
+<?php
+    if (defined('ABSPATH') === false) {
+        exit;
+    }
+?>
     <h2>Send test mail</h2>
     <?php if (isset($testMail['result']) and $testMail['result'] === true): ?>
         <p><strong>Successfully sent</strong>, duration: <?php echo esc_html($testMail['duration']); ?> second(s)</p>

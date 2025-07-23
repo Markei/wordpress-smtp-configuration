@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Markei\SmtpConfiguration\Exception;
 
+if (defined('ABSPATH') === false) {
+    exit;
+}
+
 class OAuthException extends \RuntimeException
 {
     public function __construct(
